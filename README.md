@@ -28,13 +28,13 @@ The application is containerized using a Dockerfile to ensure consistency across
 
 A Jenkins pipeline automates the entire build and deployment process:
 
-Fetches the latest code from GitHub.
+**Fetches the latest code** from GitHub.
 
-Builds a Docker image and tags it.
+**Builds a Docker image** and tags it.
 
-Pushes the image to Docker Hub.
+**Pushes the image** to Docker Hub.
 
-Deploys the container by running it.
+**Deploys the container** by running it.
 
 ## **4. Setup in Jenkins**
 
