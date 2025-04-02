@@ -5,7 +5,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copy the Java file into the container
-COPY Main.java .
+COPY src/Main.java .
 
 # Compile the Java program
 RUN javac Main.java
