@@ -22,19 +22,22 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 withCredentials([string(credentialsId: 'docker-hub-credentials', variable: 'DOCKER_HUB_TOKEN')]) {
-                    sh "echo $DOCKER_HUB_TOKEN | docker login -u tejaswirajendra --password-stdin"
-                }
-
-                    sh 'docker push $DOCKER_HUB_USER/$IMAGE_NAME:latest'
+                    sh """
+                        echo $DOCKER_HUB_TOKEN | docker login -u $DOCKER_HUB_USER --password-stdin
+                        docker push $DOCKER_HUB_USER/$IMAGE_NAME:latest
+                        docker logout
+                    """
                 }
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'docker run --rm $DOCKER_HUB_USER/$IMAGE_NAME:latest'
+                sh """
+                    docker pull $DOCKER_HUB_USER/$IMAGE_NAME:latest
+                    docker run -d --name java-app $DOCKER_HUB_USER/$IMAGE_NAME:latest
+                """
             }
         }
     }
 }
-
