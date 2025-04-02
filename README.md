@@ -15,19 +15,6 @@ GitHub (Version Control)
 
 Docker Hub (Image Repository)
 
-## Prerequisites
-
-Ensure the following tools are installed on your system:
-
-Java JDK 17
-
-Docker
-
-Jenkins
-
-Git
-
-Maven (if using dependency management)
 
 ## **1. Java Application Overview**
 
